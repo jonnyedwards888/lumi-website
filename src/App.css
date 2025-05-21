@@ -632,3 +632,9 @@ html {
     font-size: 1.5rem;
   }
 }
+
+.lumi-rewards-image {
+  width: 160px !important;
+  max-width: 40vw !important;
+  margin-bottom: 0 !important;
+}

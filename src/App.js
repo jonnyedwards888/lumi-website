@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route, Link, useNavigate, useParams } from "react-router-dom";
 import "./index.css";
 import './App.css';
+import './LotsGoingOn.css';
+import './IphoneScreen.css';
 
 function HeroSection() {
   return (
