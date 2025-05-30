@@ -17,7 +17,14 @@ function HeroSection() {
         <Link to="/solutions" className="hero-topbar-btn">Solutions</Link>
         <Link to="/faqs" className="hero-topbar-btn">FAQs</Link>
         <Link to="/about" className="hero-topbar-btn">About</Link>
-        <button className="hero-topbar-btn hero-topbar-close-btn">X</button>
+        <a
+          href="https://x.com/Lumi_AI_"
+          className="hero-topbar-btn hero-topbar-close-btn"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          X
+        </a>
       </div>
       <div className="hero-content">
         <img
