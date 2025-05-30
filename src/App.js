@@ -17,6 +17,7 @@ function HeroSection() {
         <Link to="/solutions" className="hero-topbar-btn">Solutions</Link>
         <Link to="/faqs" className="hero-topbar-btn">FAQs</Link>
         <Link to="/about" className="hero-topbar-btn">About</Link>
+        <button className="hero-topbar-btn hero-topbar-close-btn">X</button>
       </div>
       <div className="hero-content">
         <img
@@ -135,48 +136,6 @@ function DataSection() {
         </div>
       </div>
     </div>
-  );
-}
-
-function LotsGoingOnSection() {
-  return (
-    <section className="lots-going-on-section w-full flex flex-col items-center justify-center py-16" style={{ background: 'none' }}>
-      <h2 className="text-white text-center mb-10" style={{ fontFamily: 'Orbitron, Space Grotesk, sans-serif', fontWeight: 900, fontSize: '2.5rem', letterSpacing: '0.04em' }}>THER'S LOTS GOING ON</h2>
-      <div className="lots-going-on-content rounded-[48px] border border-[#b16fc9] p-10 md:p-16" style={{ background: 'linear-gradient(135deg, #23234a 60%, #3a5e7d 120%)', boxShadow: '0 4px 32px #0006', maxWidth: '1400px', width: '100%', display: 'grid', gridTemplateColumns: '1fr 1fr', gridTemplateRows: '1fr 1fr', gap: '3rem', alignItems: 'center' }}>
-        {/* Top Left: LUMI REWARDS */}
-        <div className="flex flex-row items-center gap-8">
-          <img src={process.env.PUBLIC_URL + '/Lumi-rewards.png'} alt="Lumi Rewards" className="w-40 h-40 rounded-full shadow-xl" />
-          <div>
-            <h3 className="text-white mb-2" style={{ fontFamily: 'Space Grotesk, Orbitron, sans-serif', fontWeight: 700, fontSize: '2rem', letterSpacing: '0.01em', textAlign: 'left' }}>LUMI REWARDS</h3>
-            <p className="text-white" style={{ fontSize: '1.1rem', maxWidth: '370px', textAlign: 'left' }}>We'll be launching meme games, rewards for hodling, lots of content and ways for those who want to get involved to become part of the community, on a rewarded basis</p>
-          </div>
-        </div>
-        {/* Top Right: LUMI'S NFT COLLECTION */}
-        <div className="flex flex-row items-center gap-8">
-          <img src={process.env.PUBLIC_URL + '/Lumi-nft-collection.png'} alt="Lumi NFT Collection" className="w-40 h-28 rounded shadow-xl" />
-          <div>
-            <h3 className="text-white mb-2" style={{ fontFamily: 'Space Grotesk, Orbitron, sans-serif', fontWeight: 700, fontSize: '2rem', letterSpacing: '0.01em', textAlign: 'left' }}>LUMI'S NFT COLLECTION</h3>
-            <p className="text-white" style={{ fontSize: '1.1rem', maxWidth: '420px', textAlign: 'left' }}>Lumi's friends from Babazadeh, will bring multiple utility, be tradeable, provide identity verification and establish online trust. The first collection will be minted free for LUMI hodlers.</p>
-          </div>
-        </div>
-        {/* Bottom Left: REMELIFE */}
-        <div className="flex flex-row items-center gap-8">
-          <img src={process.env.PUBLIC_URL + '/remelife-icon.png'} alt="ReMeLife" className="w-40 h-40 rounded-full shadow-xl" />
-          <div>
-            <h3 className="text-white mb-2" style={{ fontFamily: 'Space Grotesk, Orbitron, sans-serif', fontWeight: 700, fontSize: '2rem', letterSpacing: '0.01em', textAlign: 'left' }}>REMELIFE</h3>
-            <p className="text-white" style={{ fontSize: '1.1rem', maxWidth: '370px', textAlign: 'left' }}>Sign up, get your wallet and start collecting REME tokens. Build your community, earn referral REMEs and support those engaged in care by bringing crypto to those that need it most.</p>
-          </div>
-        </div>
-        {/* Bottom Right: LUMI VIP CLUB */}
-        <div className="flex flex-row items-center gap-8">
-          <img src={process.env.PUBLIC_URL + '/lumi-vip-club.png'} alt="Lumi VIP Club" className="w-40 h-40 rounded-full shadow-xl" />
-          <div>
-            <h3 className="text-white mb-2" style={{ fontFamily: 'Space Grotesk, Orbitron, sans-serif', fontWeight: 700, fontSize: '2rem', letterSpacing: '0.01em', textAlign: 'left' }}>LUMI VIP CLUB</h3>
-            <p className="text-white" style={{ fontSize: '1.1rem', maxWidth: '420px', textAlign: 'left' }}>LUMI token holders get VIP Club Membership and privileged access to many benefits, from airdrops to pre-launch discounts, merch to special events.</p>
-          </div>
-        </div>
-      </div>
-    </section>
   );
 }
 
@@ -624,7 +583,6 @@ function App() {
               <div style={{ background: '#18153a', width: '100vw' }}>
                 <FounderSection />
                 <DataSection />
-                <LotsGoingOnSection />
                 <FooterSection />
               </div>
             </>
