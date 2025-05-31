@@ -71,15 +71,15 @@ function LumiTokenSection() {
       <h2 className="lumi-token-heading" style={{ fontFamily: 'Orbitron, Space Grotesk, sans-serif', fontWeight: 900, fontSize: '2.5rem', color: '#fff', marginBottom: '2.5rem', letterSpacing: '0.01em', textAlign: 'center' }}>What is the $LUMI token?</h2>
       <div className="max-w-3xl w-full px-4" style={{ color: '#fff', fontSize: '1.2rem', fontFamily: 'Space Grotesk, Orbitron, sans-serif' }}>
         <div style={{ marginBottom: '1.2rem' }}>
-          <span className="lumi-token-remelife" style={{ color: '#8be37a', fontStyle: 'italic', fontWeight: 600, fontSize: '1.1em' }}>ReMeLife</span>
-          <span> is a tokenised Care2Earn care platform that rewards its users for their digital care actions using our proprietary apps.</span>
+          <img src={process.env.PUBLIC_URL + '/ReMeLife-top-icon.png'} alt="ReMeLife" style={{ display: 'inline', width: '5.2em', height: 'auto', verticalAlign: 'middle', marginRight: '0.4em' }} />
+          <span>is a tokenised Care2Earn care platform that rewards its users for their digital care actions using our proprietary apps.</span>
         </div>
         <div style={{ marginBottom: '1.2rem' }}>
-          <span className="lumi-token-remindme" style={{ color: '#b16fc9', fontWeight: 600, fontSize: '1.1em' }}>&#x1F9D1;&#x200D;&#x1F4BB;RemindMe</span><span style={{ color: '#b16fc9', fontWeight: 600, fontSize: '1.1em' }}>care</span>
-          <span> is the app at the heart of the ReMeLife ecosystem, that enhances person-centred care for those with cognitive difficulties.</span>
+          <img src={process.env.PUBLIC_URL + '/RemineMecare-icon.png'} alt="RemindMeCare" style={{ display: 'inline', width: '10em', height: 'auto', verticalAlign: 'middle', marginRight: '0.4em' }} />
+          <span>is the app at the heart of the ReMeLife ecosystem, that enhances person-centred care for those with cognitive difficulties.</span>
         </div>
         <div style={{ marginBottom: '1.2rem' }}>
-          <span className="lumi-token-lumiai" style={{ background: 'linear-gradient(90deg, #ff7ee7 0%, #b16fc9 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', fontWeight: 700, fontSize: '1.1em', letterSpacing: '0.04em', fontFamily: 'Orbitron, Space Grotesk, sans-serif' }}>LUMI AI</span>
+          <span className="lumi-token-lumiai" style={{ background: 'linear-gradient(90deg, #ff7ee7 0%, #b16fc9 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', fontWeight: 700, fontSize: '1.1em', letterSpacing: '0.04em', fontFamily: 'Orbitron, Space Grotesk, sans-serif' }}>LUMI </span>
           <span> is the AI avatar in ReMeLife's health care ecosystem that manages the apps and data, and supports and guides users. LUMI is a utility token.</span>
         </div>
         <div style={{ marginBottom: '2.2rem' }}>
@@ -154,8 +154,8 @@ function FounderSection() {
           <source src={process.env.PUBLIC_URL + "/Lumi-founder-video.mp4"} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        <div className="founder-text flex-1 text-white">
-          <p className="mt-4 text-lg">
+        <div className="founder-text flex-1 text-white" style={{ fontFamily: 'Inter, sans-serif', fontSize: '1.3rem' }}>
+          <p className="mt-4">
             Do you have a family member with dementia, living alone, with autism or learning difficulties? 62% of the world does, so you probably do. I did. And that's how I came from the music business into the world of care. It's been a long journey, from building my first app 11 years ago, to crypto, memes and to now, the launch of Lumi.
           </p>
         </div>
