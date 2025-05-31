@@ -212,7 +212,7 @@ function DataSection() {
 
 function FooterSection() {
   return (
-    <footer className="footer-section w-full" style={{ background: '#18153a', padding: '2rem 0 1.5rem 0', borderTop: '1.5px solid #23234a', marginTop: '3rem' }}>
+    <footer className="footer-section w-full">
       <div className="footer-content">
         {/* Left: Logo, Copyright, Disclaimer */}
         <div className="footer-left">
@@ -674,7 +674,7 @@ This policy will explain areas of our app or website that may affect your privac
 
 We are the data controller under the applicable privacy laws.
 
-For the purpose of this Policy, “Information” means any information relating to an identified or identifiable individual. This includes Information relating to your use of: (a) our mobile apps (“Mobile App” the “Service”); (b) www.blui.io and any other dedicated websites which link to this policy (“Website”). When you use the App or website you accept our rules and policies which set out how we handle your Information, and you understand we may collect, process, use and store your Information as described in this Policy. “Payment” refers to deposits made using tokens via your virtual wallet. If you do not agree with this Policy, you must not use our app or website. If you change your mind in the future, you must stop using our app or website, and you may exercise your rights in relation to your Information as set out in this Policy.
+For the purpose of this Policy, "Information" means any information relating to an identified or identifiable individual. This includes Information relating to your use of: (a) our mobile apps ("Mobile App" the "Service"); (b) www.blui.io and any other dedicated websites which link to this policy ("Website"). When you use the App or website you accept our rules and policies which set out how we handle your Information, and you understand we may collect, process, use and store your Information as described in this Policy. "Payment" refers to deposits made using tokens via your virtual wallet. If you do not agree with this Policy, you must not use our app or website. If you change your mind in the future, you must stop using our app or website, and you may exercise your rights in relation to your Information as set out in this Policy.
 
 PERSONAL INFORMATION WE COLLECT
 We may collect and use the following Information about you:
@@ -693,7 +693,7 @@ Information we automatically collect or is generated about you when you, registe
 
 Identifiers, such as your name, email address, IP address, device and app ID, unique ID, location data and device information (such as model, brand and operating system).
 
-Cookies: we use cookies and other similar technologies (e.g., web beacons, log files, and scripts) (“Cookies”) to enhance your experience when using our services. Cookies are small files which, when placed on your device, enable us to provide certain features and functionality. You have the option to permit installation of such Cookies or subsequently disable them. You may accept all cookies or instruct the device or web browser to provide notice at the time of installation of cookies or refuse to accept all cookies by adjusting the relevant cookie retention function in your device. However, in the event of your refusal to install cookies, the Game may be unable to operate as designed. For more information about our Cookies policy, click here.
+Cookies: we use cookies and other similar technologies (e.g., web beacons, log files, and scripts) ("Cookies") to enhance your experience when using our services. Cookies are small files which, when placed on your device, enable us to provide certain features and functionality. You have the option to permit installation of such Cookies or subsequently disable them. You may accept all cookies or instruct the device or web browser to provide notice at the time of installation of cookies or refuse to accept all cookies by adjusting the relevant cookie retention function in your device. However, in the event of your refusal to install cookies, the Game may be unable to operate as designed. For more information about our Cookies policy, click here.
 
 Information regarding your use of the website or app, such as date and time stamps of events, interactions with our teams.
 
@@ -806,7 +806,7 @@ Change of corporate ownership. If we are involved in a merger, acquisition, bank
 
 Third Party Privacy Practices
 
-If you access any service through a third-party platform such as Apple or Google (“Third Party Services”), you must understand that those Third Party Services may collect other information about you (including information you share with them directly or about your use of the app or website) in accordance with their own terms and privacy policies. The privacy practices described in this Policy do not apply to Third Party Services. Any links to Third Party Services do not imply that we endorse or have reviewed the Third-Party Services.
+If you access any service through a third-party platform such as Apple or Google ("Third Party Services"), you must understand that those Third Party Services may collect other information about you (including information you share with them directly or about your use of the app or website) in accordance with their own terms and privacy policies. The privacy practices described in this Policy do not apply to Third Party Services. Any links to Third Party Services do not imply that we endorse or have reviewed the Third-Party Services.
 
 Security
 
@@ -925,7 +925,7 @@ function App() {
             <>
               <HeroSection />
               <LumiTokenSection />
-              <div style={{ background: '#18153a', width: '100vw' }}>
+              <div style={{ background: '#120f2c', width: '100vw' }}>
                 <FounderSection />
                 <DataSection />
                 <PhasesSection />

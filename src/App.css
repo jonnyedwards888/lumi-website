@@ -518,187 +518,98 @@ html {
   line-height: 1.5;
 }
 
-.solutions-footer {
-  background: #120f2c;
-  border-top: 1.5px solid #23234a;
-  padding: 2rem 1rem 1.5rem 1rem;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
-  margin-top: 3rem;
-}
-.footer-logo {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: #23234a;
-}
-.footer-disclaimer {
-  color: #bcbcbc;
-  font-size: 0.85rem;
-  max-width: 320px;
-  line-height: 1.4;
-}
-.footer-links a {
-  color: #fff;
-  font-size: 0.98rem;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-.footer-links a:hover {
-  color: #b16fc9;
-  text-decoration: underline;
-}
-.footer-social-icon {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: #23234a;
-  transition: box-shadow 0.2s;
-}
-.footer-social-icon:hover {
-  box-shadow: 0 0 8px #b16fc9cc;
-}
-@media (max-width: 900px) {
-  .solutions-footer {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 1.5rem;
-    padding: 2rem 0.5rem 1.5rem 0.5rem;
-  }
-  .footer-links {
-    flex-wrap: wrap;
-    gap: 1rem;
-  }
-  .footer-disclaimer {
-    max-width: 100%;
-    font-size: 0.8rem;
-  }
-}
-
-.lumi-token-section {
-  background: #120f2c;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 4rem 0 2rem 0;
-}
-.lumi-token-heading {
-  font-family: 'Orbitron', 'Space Grotesk', sans-serif;
-  font-size: 2.5rem;
-  font-weight: 900;
-  color: #fff;
-  margin-bottom: 2.5rem;
-  letter-spacing: 0.01em;
-}
-.lumi-token-remelife {
-  color: #8be37a;
-  font-family: 'Space Grotesk', 'Orbitron', sans-serif;
-  font-weight: 600;
-  font-style: italic;
-  font-size: 1.1em;
-}
-.lumi-token-remindme {
-  color: #b16fc9;
-  font-family: 'Space Grotesk', 'Orbitron', sans-serif;
-  font-weight: 600;
-  font-size: 1.1em;
-}
-.lumi-token-lumiai {
-  background: linear-gradient(90deg, #ff7ee7 0%, #b16fc9 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-fill-color: transparent;
-  font-family: 'Orbitron', 'Space Grotesk', sans-serif;
-  font-weight: 700;
-  font-size: 1.1em;
-  letter-spacing: 0.04em;
-}
-@media (max-width: 900px) {
-  .lumi-token-section {
-    padding: 2.5rem 0 1.5rem 0;
-  }
-  .lumi-token-heading {
-    font-size: 1.5rem;
-  }
-}
-
-.lumi-rewards-image {
-  width: 160px !important;
-  max-width: 40vw !important;
-  margin-bottom: 0 !important;
+.footer-section {
+  background: #3a2fa4;
+  padding: 2rem 0 1.5rem 0;
+  border-top: 2px solid #23234a;
+  margin-top: 0;
 }
 
 .footer-content {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: flex-start;
   gap: 2rem;
   width: 100%;
   max-width: 1400px;
   margin: 0 auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
+
 .footer-left {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   gap: 1.5rem;
-  min-width: 320px;
+  text-align: left;
+  min-width: 0;
+  margin-left: 0;
+  width: 50%;
+  justify-content: flex-start;
 }
+
 .footer-left .footer-logo {
   width: 64px;
   height: 64px;
   border-radius: 50%;
+  background: #23234a;
 }
+
 .footer-left .footer-meta {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  margin-top: 0.2rem;
 }
+
 .footer-left .footer-copyright {
   color: #fff;
   font-size: 1rem;
   font-weight: 700;
   margin-bottom: 4px;
 }
+
 .footer-left .footer-disclaimer {
   color: #bcbcbc;
   font-size: 0.95rem;
   max-width: 420px;
   line-height: 1.4;
 }
+
 .footer-right {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
   justify-content: flex-end;
+  min-width: 0;
+  width: 50%;
   gap: 2.5rem;
-  min-width: 320px;
 }
+
 .footer-resources {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   min-width: 180px;
 }
+
 .footer-resources-title {
   color: #fff;
   font-weight: 700;
   font-size: 1.1rem;
   margin-bottom: 0.5rem;
 }
+
 .footer-socials {
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: 1.5rem;
+  margin-top: 0;
 }
+
 @media (max-width: 900px) {
   .footer-content {
     flex-direction: column;
@@ -712,11 +623,18 @@ html {
     align-items: flex-start;
     gap: 1.2rem;
     min-width: unset;
+    width: 100%;
+    justify-content: flex-start;
   }
   .footer-left {
     min-width: unset;
     width: 100%;
     align-items: flex-start;
+    margin-left: 0;
+    justify-content: flex-start;
+  }
+  .footer-socials {
+    margin-top: 1.2rem;
   }
 }
 
