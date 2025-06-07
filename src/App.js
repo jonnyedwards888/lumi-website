@@ -89,6 +89,16 @@ function LumiTokenSection() {
           Decentralisation is the key driver for social change, AI and blockchain are the engines of progress, and tokenization is the fuel that empowers us. Whether 80 and learning to use a tablet, or 18 and harvesting the native token through community building and app usage, Lumi is there to help.
         </div>
       </div>
+      <div style={{ display: 'flex', justifyContent: 'center', width: '100%', marginTop: '2.5rem' }}>
+        <video
+          src={process.env.PUBLIC_URL + '/Lumi-spaceship-video.mp4'}
+          autoPlay
+          loop
+          muted
+          playsInline
+          style={{ width: '820px', maxWidth: '99vw', borderRadius: '2rem', boxShadow: '0 4px 32px #0008', background: '#222' }}
+        />
+      </div>
     </section>
   );
 }
@@ -100,39 +110,104 @@ function PhasesSection() {
       <div className="phases-grid">
         {/* Phase 1 */}
         <div className="phases-card">
-          <div className="phases-heading">PHASE 1 2024</div>
+          <div className="phases-heading">PHASE 1 2024/5</div>
           <div className="phases-content">
-            <b>November</b><br />Complete RemindMecare<br /><br />
-            <b>December</b><br />Complete ReMeLife (Beta)<br />Complete RAPP<br /><br />
-            <b>December</b><br />Tokenomics modelling<br />AI project design
+            <ul>
+              <li>Complete RemindMecare</li>
+              <li>Complete ReMeLife (Beta)</li>
+              <li>Complete RAPP</li>
+              <li>Finalise tokenomics modelling</li>
+              <li>AI project design</li>
+            </ul>
           </div>
         </div>
         {/* Phase 2 */}
         <div className="phases-card">
           <div className="phases-heading">PHASE 2 2025</div>
           <div className="phases-content">
-            <b>May 2025</b><br />Complete project audits<br /><br />
-            <b>June 2025</b><br />Launch RemindMecare<br /><br />
-            <b>June 2025</b><br />Launch LUMI token<br />Launch ReMeLife<br /><br />
-            <b>July 2025</b><br />Activate wallet & REME
+            <ul>
+              <li>Complete project audits</li>
+              <li>Start ReMeGrid Convex build</li>
+              <li>Activate wallet & REME</li>
+              <li>Launch RemindMecare & ReMeLife</li>
+              <li>Launch LUMI token</li>
+            </ul>
           </div>
         </div>
         {/* Phase 3 */}
         <div className="phases-card">
-          <div className="phases-heading">PHASE 3 2025</div>
+          <div className="phases-heading">PHASE 3 2025/6</div>
           <div className="phases-content">
-            <b>August</b><br />Launch LUMI VIP Club<br />& NFT collection<br /><br />
-            <b>September</b><br />Launch ReMeGrid<br /><br />
-            <b>November</b><br />Complete AI integrations
+            <ul>
+              <li>Build ReMeLife Foundation</li>
+              <li>Launch LUMI VIP Club</li>
+              <li>Launch NFT collection</li>
+              <li>Launch ReMeGrid</li>
+              <li>Launch tokens on exchanges</li>
+            </ul>
           </div>
         </div>
         {/* Phase 4 */}
         <div className="phases-card">
-          <div className="phases-heading">PHASE 4 2026</div>
+          <div className="phases-heading">PHASE 4 2025/6</div>
           <div className="phases-content">
-            <b>January</b><br />Launch ReMeLife Foundation<br /><br />
-            <b>February</b><br />Launch RAgency DeFi<br /><br />
-            <b>March</b><br />Launch Community NFT Market
+            <ul>
+              <li>Complete AI integrations</li>
+              <li>Launch ReMeLife Foundation</li>
+              <li>Launch RUBI to Members</li>
+              <li>Launch RAgency DeFi</li>
+              <li>Launch Community NFT Market</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ComingSoonSection() {
+  return (
+    <section className="coming-soon-section">
+      <h2 className="coming-soon-title">COMING SOON ...</h2>
+      <div className="coming-soon-grid">
+        {/* Top Left: LUMI REWARDS */}
+        <div className="coming-soon-item coming-soon-row">
+          <img src={process.env.PUBLIC_URL + '/Lumi-rewards.png'} alt="LUMI REWARDS" className="coming-soon-img" />
+          <div className="coming-soon-text">
+            <div className="coming-soon-item-title">LUMI REWARDS</div>
+            <div className="coming-soon-item-desc">
+              We'll be launching meme games, rewards for hodling, lots of content and ways for those who want to get involved to become part of the community, on a rewarded basis
+            </div>
+          </div>
+        </div>
+        {/* Top Right: LUMI VIP CLUB */}
+        <div className="coming-soon-item coming-soon-row">
+          <img src={process.env.PUBLIC_URL + '/lumi-vip-club.png'} alt="LUMI VIP CLUB" className="coming-soon-img" />
+          <div className="coming-soon-text">
+            <div className="coming-soon-item-title">LUMI VIP CLUB</div>
+            <div className="coming-soon-item-desc">
+              LUMI token holders get VIP Club Membership and privileged access to many benefits, from airdrops to pre-launch discounts, merch to special events.
+            </div>
+          </div>
+        </div>
+        {/* Bottom Left: LUMI'S NFT COLLECTION */}
+        <div className="coming-soon-item coming-soon-row">
+          <img src={process.env.PUBLIC_URL + '/Lumi-nft-collection.png'} alt="LUMI'S NFT COLLECTION" className="coming-soon-img" />
+          <div className="coming-soon-text">
+            <div className="coming-soon-item-title">LUMI'S NFT COLLECTION</div>
+            <div className="coming-soon-item-desc">
+              Yes we love NFT's. Lumi's friends will bring multiple utility, be tradeable, provide identity verification and establish online trust. The first collection will be minted free for LUMI hodlers.
+            </div>
+          </div>
+        </div>
+        {/* Bottom Right: REMELIFE */}
+        <div className="coming-soon-item coming-soon-row">
+          <img src={process.env.PUBLIC_URL + '/remelife-icon.png'} alt="REMELIFE" className="coming-soon-img" />
+          <div className="coming-soon-text">
+            <div className="coming-soon-item-title">REMELIFE</div>
+            <div className="coming-soon-item-desc">
+              Sign up, get your wallet and start collecting REME tokens. Build your community, earn referral REMEs and support those engaged in care by bringing crypto to those that need it most.
+            </div>
           </div>
         </div>
       </div>
@@ -251,6 +326,7 @@ function SolutionsPage() {
   const [modalOpen, setModalOpen] = useState(false);
   return (
     <>
+      <Navbar />
       <div className="solutions-section bg-[#18153a] min-h-screen text-white py-16 px-4 flex flex-col items-center">
         <h2 className="solutions-main-heading mb-12 text-[#b16fc9] text-center" style={{ fontFamily: 'Space Grotesk, Orbitron, sans-serif', fontWeight: 700, fontSize: '2rem' }}>
           Harnessing the value of digital care for those who need it most
@@ -929,6 +1005,7 @@ function App() {
                 <FounderSection />
                 <DataSection />
                 <PhasesSection />
+                <ComingSoonSection />
                 <FooterSection />
               </div>
             </>
