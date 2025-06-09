@@ -22,7 +22,7 @@ function Navbar() {
         <Link to="/faqs" className="hero-topbar-btn">FAQs</Link>
         <Link to="/about" className="hero-topbar-btn">About</Link>
         <a
-          href="https://x.com/Lumi_AI_"
+          href="https://x.com/mylumi_ai"
           className="hero-topbar-btn hero-topbar-close-btn"
           target="_blank"
           rel="noopener noreferrer"
@@ -52,7 +52,7 @@ function HeroSection() {
         <div className="lumi-hero-text">
           <h1 className="lumi-heading">LUMI </h1>
           <div className="lumi-subtitle">
-            the first AI person-centred care agent on chain
+            the first AI person-centred care agent on chain.
           </div>
           <div className="lumi-hero-buttons">
             <a href={process.env.PUBLIC_URL + "/Lumi-Lite-Paper.pdf"} className="lumi-hero-btn" target="_blank" rel="noopener noreferrer">Lite Paper</a>
@@ -229,7 +229,7 @@ function FounderSection() {
           <source src={process.env.PUBLIC_URL + "/Lumi-founder-video.mp4"} type="video/mp4" />
           Your browser does not support the video tag.
         </video>
-        <div className="founder-text flex-1 text-white" style={{ fontFamily: 'Inter, sans-serif', fontSize: '1.3rem' }}>
+        <div className="founder-text flex-1 text-white" style={{ fontFamily: 'Space Grotesk, Orbitron, sans-serif', fontSize: '1.2rem' }}>
           <p className="mt-4">
             Do you have a family member with dementia, living alone, with autism or learning difficulties? 62% of the world does, so you probably do. I did. And that's how I came from the music business into the world of care. It's been a long journey, from building my first app 11 years ago, to crypto, memes and to now, the launch of Lumi.
           </p>
@@ -309,7 +309,7 @@ function FooterSection() {
             <a href="#" style={{ color: '#fff', fontSize: '1rem', textDecoration: 'none' }}>Contact Us</a>
           </div>
           <div className="footer-socials">
-            <a href="https://x.com/Lumi_AI_" target="_blank" rel="noopener noreferrer"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/twitter.svg" alt="Twitter" style={{ width: '32px', height: '32px', background: '#1da1f2', borderRadius: '50%', padding: '4px' }} /></a>
+            <a href="https://x.com/mylumi_ai" target="_blank" rel="noopener noreferrer"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/twitter.svg" alt="Twitter" style={{ width: '32px', height: '32px', background: '#1da1f2', borderRadius: '50%', padding: '4px' }} /></a>
             <a href="#top" style={{ display: 'flex', alignItems: 'center' }}>
               <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M20 30V10M20 10L10 20M20 10L30 20" stroke="#b16fc9" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" filter="drop-shadow(0 0 8px #b16fc9)" />
@@ -740,7 +740,7 @@ PRIVACY & COOKIES POLICY
 
 INTRODUCTION
 
-This privacy policy (“Policy”) informs you of your choices and our practices in relation the information contained within this website.
+This privacy policy ("Policy") informs you of your choices and our practices in relation the information contained within this website.
 
 Children
 

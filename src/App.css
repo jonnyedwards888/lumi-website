@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100..800&display=swap');
+
 body {
+  font-family: 'Sora', sans-serif;
   margin: 0;
   background: #120f2c;
   
@@ -62,8 +65,8 @@ html {
 }
 
 .lumi-heading {
-  font-family: 'Inter', sans-serif !important;
-  font-weight: 600;
+  font-family: 'Sora', sans-serif; /* Main header font - do not override */
+  font-weight: 300;
   
   font-size: 9rem;
   color: white;
@@ -84,6 +87,7 @@ html {
   }
   .lumi-heading {
     font-size: 4rem;
+    font-family: 'Sora', sans-serif;
   }
 }
 
@@ -528,6 +532,7 @@ html {
   padding: 2rem 0 1.5rem 0;
   border-top: 2px solid #23234a;
   margin-top: 0;
+  font-family: 'Inter', sans-serif;
 }
 
 .footer-content {
@@ -643,10 +648,6 @@ html {
   }
 }
 
-.footer-content, .footer-content * {
-  font-family: 'Inter', sans-serif !important;
-}
-
 .phases-section {
   background: #120f2c;
   padding: 5rem 0 5rem 0;
@@ -729,12 +730,12 @@ html {
   }
 }
 
-.data-content, .data-content * {
-  font-family: 'Inter', sans-serif !important;
-}
-
 .lumi-token-section, .data-section, .footer-section {
   background: #120f2c !important;
+}
+
+.data-section {
+  font-family: 'Inter', sans-serif;
 }
 
 .coming-soon-section {
