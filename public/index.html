@@ -14,25 +14,23 @@
       content="Lumi is the first AI person-centred care agent on chain. Lumi is a utility token."
     />
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-
-
-
-
-
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-   
-
-
-
-
     <title>Lumi</title>
   </head>
   <body>
     <noscript></noscript>
     <div id="root"></div>
 
-
-
+    <div id="google_translate_element" style="display:none;"></div>
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+          pageLanguage: 'en',
+          autoDisplay: false
+        }, 'google_translate_element');
+      }
+    </script>
+    <script src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
  
   </body>
 </html>

@@ -8,8 +8,29 @@ import './IphoneScreen.css';
 function Navbar() {
   const location = useLocation();
   const isHome = location.pathname === '/';
+
+  React.useEffect(() => {
+    const select = document.getElementById("custom-google-translate");
+    if (!select) return;
+    select.addEventListener("change", function () {
+      const lang = select.value;
+      const frame = document.querySelector("iframe.goog-te-menu-frame");
+      if (frame) {
+        const innerDoc = frame.contentDocument || frame.contentWindow.document;
+        const langButtons = innerDoc.querySelectorAll(".goog-te-menu2-item span.text");
+        for (let i = 0; i < langButtons.length; i++) {
+          if (langButtons[i].innerHTML.indexOf(lang) > -1) {
+            langButtons[i].click();
+            break;
+          }
+        }
+      }
+    });
+  }, []);
+
   return (
     <div className="hero-topbar" style={{ width: '100vw', display: 'flex', alignItems: 'center', position: 'absolute', top: 0, left: 0, zIndex: 20, padding: '1.5rem 2.5rem 0.5rem 2.5rem' }}>
+      <div id="google_translate_element" className="lumi-translate-dropdown"></div>
       <div style={{ flex: 1, display: 'flex', alignItems: 'center' }}>
         {!isHome && (
           <Link to="/" className="hero-topbar-btn" style={{ marginRight: '1.5rem', padding: 0, background: 'none', border: 'none', boxShadow: 'none', display: 'flex', alignItems: 'center' }}>

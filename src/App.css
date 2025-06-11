@@ -864,3 +864,23 @@ html {
     max-width: 95vw;
   }
 }
+
+#custom-translate-container {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 999px;
+  padding: 4px 12px;
+}
+
+#custom-google-translate {
+  background: transparent;
+  color: white;
+  border: none;
+  font-size: 14px;
+  font-family: 'Space Grotesk', sans-serif;
+  cursor: pointer;
+  outline: none;
+}
