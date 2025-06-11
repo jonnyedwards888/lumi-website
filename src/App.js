@@ -4,33 +4,30 @@ import "./index.css";
 import './App.css';
 import './LotsGoingOn.css';
 import './IphoneScreen.css';
+import { useTranslation } from 'react-i18next';
+import './i18n'; // Import the i18n configuration
 
 function Navbar() {
   const location = useLocation();
   const isHome = location.pathname === '/';
+  const { t, i18n } = useTranslation();
 
-  React.useEffect(() => {
-    const select = document.getElementById("custom-google-translate");
-    if (!select) return;
-    select.addEventListener("change", function () {
-      const lang = select.value;
-      const frame = document.querySelector("iframe.goog-te-menu-frame");
-      if (frame) {
-        const innerDoc = frame.contentDocument || frame.contentWindow.document;
-        const langButtons = innerDoc.querySelectorAll(".goog-te-menu2-item span.text");
-        for (let i = 0; i < langButtons.length; i++) {
-          if (langButtons[i].innerHTML.indexOf(lang) > -1) {
-            langButtons[i].click();
-            break;
-          }
-        }
-      }
-    });
-  }, []);
+  const changeLanguage = (event) => {
+    i18n.changeLanguage(event.target.value);
+  };
 
   return (
     <div className="hero-topbar" style={{ width: '100vw', display: 'flex', alignItems: 'center', position: 'absolute', top: 0, left: 0, zIndex: 20, padding: '1.5rem 2.5rem 0.5rem 2.5rem' }}>
-      <div id="google_translate_element" className="lumi-translate-dropdown"></div>
+      <div id="custom-translate-container">
+        <select id="custom-google-translate" onChange={changeLanguage} value={i18n.language}>
+          <option value="en">{t('english')}</option>
+          <option value="es">{t('spanish')}</option>
+          <option value="fr">{t('french')}</option>
+          <option value="de">{t('german')}</option>
+          <option value="ar">{t('arabic')}</option>
+          <option value="zh-CN">{t('chinese')}</option>
+        </select>
+      </div>
       <div style={{ flex: 1, display: 'flex', alignItems: 'center' }}>
         {!isHome && (
           <Link to="/" className="hero-topbar-btn" style={{ marginRight: '1.5rem', padding: 0, background: 'none', border: 'none', boxShadow: 'none', display: 'flex', alignItems: 'center' }}>
@@ -39,9 +36,9 @@ function Navbar() {
         )}
       </div>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'flex-end', gap: '0' }}>
-        <Link to="/solutions" className="hero-topbar-btn">Solutions</Link>
-        <Link to="/faqs" className="hero-topbar-btn">FAQs</Link>
-        <Link to="/about" className="hero-topbar-btn">About</Link>
+        <Link to="/solutions" className="hero-topbar-btn">{t('solutions')}</Link>
+        <Link to="/faqs" className="hero-topbar-btn">{t('faqs')}</Link>
+        <Link to="/about" className="hero-topbar-btn">{t('about')}</Link>
         <a
           href="https://x.com/mylumi_ai"
           className="hero-topbar-btn hero-topbar-close-btn"
@@ -56,6 +53,7 @@ function Navbar() {
 }
 
 function HeroSection() {
+  const { t } = useTranslation();
   return (
     <div
       className="hero-section"
@@ -71,14 +69,14 @@ function HeroSection() {
           className="lumi-fullbody-img"
         />
         <div className="lumi-hero-text">
-          <h1 className="lumi-heading">LUMI </h1>
+          <h1 className="lumi-heading">{t('lumiHeading')} </h1>
           <div className="lumi-subtitle">
-            the first AI person-centred care agent on chain.
+            {t('lumiSubtitle')}
           </div>
           <div className="lumi-hero-buttons">
-            <a href={process.env.PUBLIC_URL + "/Lumi-Lite-Paper.pdf"} className="lumi-hero-btn" target="_blank" rel="noopener noreferrer">Lite Paper</a>
-            <a href="#" className="lumi-hero-btn">Register</a>
-            <a href="#" className="lumi-hero-btn">Buy $LUMI</a>
+            <a href={process.env.PUBLIC_URL + "/Lumi-Lite-Paper.pdf"} className="lumi-hero-btn" target="_blank" rel="noopener noreferrer">{t('litePaper')}</a>
+            <a href="#" className="lumi-hero-btn">{t('register')}</a>
+            <a href="#" className="lumi-hero-btn">{t('buyLUMI')}</a>
           </div>
         </div>
       </div>
@@ -87,27 +85,28 @@ function HeroSection() {
 }
 
 function LumiTokenSection() {
+  const { t } = useTranslation();
   return (
     <section className="lumi-token-section" style={{ background: '#18153a', width: '100vw', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '4rem 0 2rem 0' }}>
-      <h2 className="lumi-token-heading" style={{ fontFamily: 'Orbitron, Space Grotesk, sans-serif', fontWeight: 900, fontSize: '2.5rem', color: '#fff', marginBottom: '2.5rem', letterSpacing: '0.01em', textAlign: 'center' }}>What is the $LUMI token?</h2>
+      <h2 className="lumi-token-heading" style={{ fontFamily: 'Orbitron, Space Grotesk, sans-serif', fontWeight: 900, fontSize: '2.5rem', color: '#fff', marginBottom: '2.5rem', letterSpacing: '0.01em', textAlign: 'center' }}>{t('whatIsLUMIToken')}</h2>
       <div className="max-w-3xl w-full px-4" style={{ color: '#fff', fontSize: '1.2rem', fontFamily: 'Space Grotesk, Orbitron, sans-serif' }}>
         <div style={{ marginBottom: '1.2rem' }}>
           <img src={process.env.PUBLIC_URL + '/ReMeLife-top-icon.png'} alt="ReMeLife" style={{ display: 'inline', width: '5.2em', height: 'auto', verticalAlign: 'middle', marginRight: '0.4em' }} />
-          <span>is a tokenised Care2Earn care platform that rewards its users for their digital care actions using our proprietary apps.</span>
+          <span>{t('remelifeDesc1')}</span>
         </div>
         <div style={{ marginBottom: '1.2rem' }}>
           <img src={process.env.PUBLIC_URL + '/RemineMecare-icon.png'} alt="RemindMeCare" style={{ display: 'inline', width: '10em', height: 'auto', verticalAlign: 'middle', marginRight: '0.4em' }} />
-          <span>is the app at the heart of the ReMeLife ecosystem, that enhances person-centred care for those with cognitive difficulties.</span>
+          <span>{t('remelifeDesc2')}</span>
         </div>
         <div style={{ marginBottom: '1.2rem' }}>
           <span className="lumi-token-lumiai" style={{ background: 'linear-gradient(90deg, #ff7ee7 0%, #b16fc9 100%)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', fontWeight: 700, fontSize: '1.1em', letterSpacing: '0.04em', fontFamily: 'Orbitron, Space Grotesk, sans-serif' }}>LUMI </span>
-          <span> is the AI avatar in ReMeLife's health care ecosystem that manages the apps and data, and supports and guides users. LUMI is a utility token.</span>
+          <span> {t('lumiAITokenDesc')}</span>
         </div>
         <div style={{ marginBottom: '2.2rem' }}>
-          We're building an agentic LLM based AI suite, that's layered into the existing ReMeLife platform and apps, and using our proprietary Electronic Life Records (ELR) dataset, so as to optimise the process of personal profile creation for those being cared for with cognitive conditions, enhance supportive care interactivity, fully bespoke entertainment, and tailor community engagement, whilst managing security and monetising personal data for the ReMeLife community.
+          {t('aiSuiteDesc')}
         </div>
         <div>
-          Decentralisation is the key driver for social change, AI and blockchain are the engines of progress, and tokenization is the fuel that empowers us. Whether 80 and learning to use a tablet, or 18 and harvesting the native token through community building and app usage, Lumi is there to help.
+          {t('decentralizationDesc')}
         </div>
       </div>
       <div style={{ display: 'flex', justifyContent: 'center', width: '100%', marginTop: '2.5rem' }}>
@@ -125,13 +124,14 @@ function LumiTokenSection() {
 }
 
 function PhasesSection() {
+  const { t } = useTranslation();
   return (
     <section className="phases-section">
-      <h2 className="phases-title">PHASES</h2>
+      <h2 className="phases-title">{t('phasesTitle')}</h2>
       <div className="phases-grid">
         {/* Phase 1 */}
         <div className="phases-card">
-          <div className="phases-heading">PHASE 1 2024/5</div>
+          <div className="phases-heading">{t('phase1')}</div>
           <div className="phases-content">
             <ul>
               <li>Complete RemindMecare</li>
@@ -144,7 +144,7 @@ function PhasesSection() {
         </div>
         {/* Phase 2 */}
         <div className="phases-card">
-          <div className="phases-heading">PHASE 2 2025</div>
+          <div className="phases-heading">{t('phase2')}</div>
           <div className="phases-content">
             <ul>
               <li>Complete project audits</li>
@@ -157,7 +157,7 @@ function PhasesSection() {
         </div>
         {/* Phase 3 */}
         <div className="phases-card">
-          <div className="phases-heading">PHASE 3 2025/6</div>
+          <div className="phases-heading">{t('phase3')}</div>
           <div className="phases-content">
             <ul>
               <li>Build ReMeLife Foundation</li>
@@ -170,7 +170,7 @@ function PhasesSection() {
         </div>
         {/* Phase 4 */}
         <div className="phases-card">
-          <div className="phases-heading">PHASE 4 2025/6</div>
+          <div className="phases-heading">{t('phase4')}</div>
           <div className="phases-content">
             <ul>
               <li>Complete AI integrations</li>
@@ -187,17 +187,18 @@ function PhasesSection() {
 }
 
 function ComingSoonSection() {
+  const { t } = useTranslation();
   return (
     <section className="coming-soon-section">
-      <h2 className="coming-soon-title">COMING SOON ...</h2>
+      <h2 className="coming-soon-title">{t('comingSoonTitle')}</h2>
       <div className="coming-soon-grid">
         {/* Top Left: LUMI REWARDS */}
         <div className="coming-soon-item coming-soon-row">
           <img src={process.env.PUBLIC_URL + '/Lumi-rewards.png'} alt="LUMI REWARDS" className="coming-soon-img" />
           <div className="coming-soon-text">
-            <div className="coming-soon-item-title">LUMI REWARDS</div>
+            <div className="coming-soon-item-title">{t('lumiRewardsTitle')}</div>
             <div className="coming-soon-item-desc">
-              We'll be launching meme games, rewards for hodling, lots of content and ways for those who want to get involved to become part of the community, on a rewarded basis
+              {t('lumiRewardsDesc')}
             </div>
           </div>
         </div>
@@ -205,9 +206,9 @@ function ComingSoonSection() {
         <div className="coming-soon-item coming-soon-row">
           <img src={process.env.PUBLIC_URL + '/lumi-vip-club.png'} alt="LUMI VIP CLUB" className="coming-soon-img" />
           <div className="coming-soon-text">
-            <div className="coming-soon-item-title">LUMI VIP CLUB</div>
+            <div className="coming-soon-item-title">{t('lumiVipClubTitle')}</div>
             <div className="coming-soon-item-desc">
-              LUMI token holders get VIP Club Membership and privileged access to many benefits, from airdrops to pre-launch discounts, merch to special events.
+              {t('lumiVipClubDesc')}
             </div>
           </div>
         </div>
@@ -215,9 +216,9 @@ function ComingSoonSection() {
         <div className="coming-soon-item coming-soon-row">
           <img src={process.env.PUBLIC_URL + '/Lumi-nft-collection.png'} alt="LUMI'S NFT COLLECTION" className="coming-soon-img" />
           <div className="coming-soon-text">
-            <div className="coming-soon-item-title">LUMI'S NFT COLLECTION</div>
+            <div className="coming-soon-item-title">{t('lumiNftCollectionTitle')}</div>
             <div className="coming-soon-item-desc">
-              Yes we love NFT's. Lumi's friends will bring multiple utility, be tradeable, provide identity verification and establish online trust. The first collection will be minted free for LUMI hodlers.
+              {t('lumiNftCollectionDesc')}
             </div>
           </div>
         </div>
@@ -225,9 +226,9 @@ function ComingSoonSection() {
         <div className="coming-soon-item coming-soon-row">
           <img src={process.env.PUBLIC_URL + '/remelife-icon.png'} alt="REMELIFE" className="coming-soon-img" />
           <div className="coming-soon-text">
-            <div className="coming-soon-item-title">REMELIFE</div>
+            <div className="coming-soon-item-title">{t('remelifeSectionTitle')}</div>
             <div className="coming-soon-item-desc">
-              Sign up, get your wallet and start collecting REME tokens. Build your community, earn referral REMEs and support those engaged in care by bringing crypto to those that need it most.
+              {t('remelifeSectionDesc')}
             </div>
           </div>
         </div>
@@ -237,10 +238,11 @@ function ComingSoonSection() {
 }
 
 function FounderSection() {
+  const { t } = useTranslation();
   return (
     <div className="founder-section w-full flex flex-col items-center justify-center bg-[#18153a] py-16 px-4">
       <h2 className="founder-heading-main text-white text-center mb-12" style={{ fontFamily: 'Orbitron, Space Grotesk, sans-serif' }}>
-        A few words from the Founder...
+        {t('founderHeading')}
       </h2>
       <div className="founder-content flex flex-col md:flex-row items-center max-w-4xl w-full gap-8">
         <video
@@ -252,7 +254,7 @@ function FounderSection() {
         </video>
         <div className="founder-text flex-1 text-white" style={{ fontFamily: 'Space Grotesk, Orbitron, sans-serif', fontSize: '1.2rem' }}>
           <p className="mt-4">
-            Do you have a family member with dementia, living alone, with autism or learning difficulties? 62% of the world does, so you probably do. I did. And that's how I came from the music business into the world of care. It's been a long journey, from building my first app 11 years ago, to crypto, memes and to now, the launch of Lumi.
+            {t('founderText1')}
           </p>
         </div>
       </div>
@@ -261,21 +263,22 @@ function FounderSection() {
 }
 
 function DataSection() {
+  const { t } = useTranslation();
   return (
     <div className="data-section w-full flex flex-col justify-center items-center py-16">
-      <h2 className="data-heading mb-8 text-white text-center" style={{ fontFamily: 'Orbitron, Space Grotesk, sans-serif', fontWeight: 900, fontSize: '2.5rem', letterSpacing: '0.04em' }}>DATA</h2>
+      <h2 className="data-heading mb-8 text-white text-center" style={{ fontFamily: 'Orbitron, Space Grotesk, sans-serif', fontWeight: 900, fontSize: '2.5rem', letterSpacing: '0.04em' }}>{t('dataHeading')}</h2>
       <div className="data-content flex flex-col md:flex-row items-center rounded-[48px] border border-[#b16fc9] p-10 md:p-16 gap-10 md:gap-20" style={{ background: 'linear-gradient(135deg, #23234a 60%, #3a5e7d 120%)', boxShadow: '0 4px 32px #0006', maxWidth: '1200px', width: '100%' }}>
         {/* Left Side */}
         <div className="flex flex-col items-center md:items-start gap-6 min-w-[260px]">
           <img src={process.env.PUBLIC_URL + "/lumiai-project-analysis.jpg"} alt="LUMI AI Project Analysis" className="w-48 h-48 object-cover rounded-lg mb-2" />
-          <a href="#" className="bg-white text-black flex items-center gap-2 px-6 py-3 rounded-lg font-bold text-lg shadow hover:bg-gray-200 transition"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" className="w-6 h-6" /> GitHub</a>
+          <a href="#" className="bg-white text-black flex items-center gap-2 px-6 py-3 rounded-lg font-bold text-lg shadow hover:bg-gray-200 transition"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" className="w-6 h-6" /> {t('githubLink')}</a>
         </div>
         {/* Middle Links */}
         <div className="flex-1 flex flex-col gap-4 text-white text-lg min-w-[220px]">
-          <div><span className="text-[#b16fc9] font-bold">LUMI's</span> <a href={process.env.PUBLIC_URL + "/Lumi-Lite-Paper.pdf"} className="text-sky-400 hover:underline" target="_blank" rel="noopener noreferrer">LITE PAPER</a></div>
-          <div><span className="text-[#b16fc9] font-bold">LUMI's</span> <a href={process.env.PUBLIC_URL + "/Lumi-Ai-Report.pdf"} className="text-sky-400 hover:underline" target="_blank" rel="noopener noreferrer">AI REPORT</a></div>
-          <div><span className="text-[#b16fc9] font-bold">ReMeLife</span> <a href={process.env.PUBLIC_URL + "/RemeLife-White-Paper.pdf"} className="text-sky-400 hover:underline" target="_blank" rel="noopener noreferrer">WHITE PAPER</a></div>
-          <div className="mt-6"><span className="text-white">Visit</span> <a href="https://github.com/ReMe-life" className="text-sky-400 hover:underline" target="_blank" rel="noopener noreferrer">GITHUB</a></div>
+          <div><span className="text-[#b16fc9] font-bold">LUMI's</span> <a href={process.env.PUBLIC_URL + "/Lumi-Lite-Paper.pdf"} className="text-sky-400 hover:underline" target="_blank" rel="noopener noreferrer">{t('litePaperLink')}</a></div>
+          <div><span className="text-[#b16fc9] font-bold">LUMI's</span> <a href={process.env.PUBLIC_URL + "/Lumi-Ai-Report.pdf"} className="text-sky-400 hover:underline" target="_blank" rel="noopener noreferrer">{t('aiReportLink')}</a></div>
+          <div><span className="text-[#b16fc9] font-bold">ReMeLife</span> <a href={process.env.PUBLIC_URL + "/RemeLife-White-Paper.pdf"} className="text-sky-400 hover:underline" target="_blank" rel="noopener noreferrer">{t('whitePaperLink')}</a></div>
+          <div className="mt-6"><span className="text-white">Visit</span> <a href="https://github.com/ReMe-life" className="text-sky-400 hover:underline" target="_blank" rel="noopener noreferrer">{t('githubLink')}</a></div>
         </div>
         {/* Right Side */}
         <div className="flex flex-col gap-8 min-w-[220px]">
@@ -283,21 +286,21 @@ function DataSection() {
             <img src={process.env.PUBLIC_URL + "/remelife-icon.png"} alt="ReMeLife" className="w-20 h-20 rounded-full" />
             <div className="flex flex-col">
               <span className="text-white">Visit</span>
-              <a href="https://remelife.com/" className="text-sky-400 hover:underline" target="_blank" rel="noopener noreferrer">REMELIFE</a>
+              <a href="https://remelife.com/" className="text-sky-400 hover:underline" target="_blank" rel="noopener noreferrer">{t('visitRemelife')}</a>
             </div>
           </div>
           <div className="flex items-center gap-4">
             <img src={process.env.PUBLIC_URL + "/remindmecare-icon.png"} alt="RemindMeCare" className="w-20 h-20 rounded-full" />
             <div className="flex flex-col">
               <span className="text-white">Visit</span>
-              <a href="https://remindmecare.com/" className="text-sky-400 hover:underline" target="_blank" rel="noopener noreferrer">REMINDMECARE</a>
+              <a href="https://remindmecare.com/" className="text-sky-400 hover:underline" target="_blank" rel="noopener noreferrer">{t('visitRemindmecare')}</a>
             </div>
           </div>
           <div className="flex items-center gap-4 mt-2">
             <img src={process.env.PUBLIC_URL + "/googleplay-icon.png"} alt="Google Play" className="w-32 h-12 object-contain" />
             <div className="flex flex-col">
               <span className="text-white">View</span>
-              <a href="https://play.google.com/store/apps/developer?id=ReMeLife" className="text-sky-400 hover:underline" target="_blank" rel="noopener noreferrer">APPS</a>
+              <a href="https://play.google.com/store/apps/developer?id=ReMeLife" className="text-sky-400 hover:underline" target="_blank" rel="noopener noreferrer">{t('viewApps')}</a>
             </div>
           </div>
         </div>
@@ -307,6 +310,7 @@ function DataSection() {
 }
 
 function FooterSection() {
+  const { t } = useTranslation();
   return (
     <footer className="footer-section w-full">
       <div className="footer-content">
@@ -314,20 +318,20 @@ function FooterSection() {
         <div className="footer-left">
           <img src={process.env.PUBLIC_URL + '/Lumi-rewards.png'} alt="Lumi Logo" className="footer-logo" />
           <div className="footer-meta">
-            <span className="footer-copyright">Copyrights 2024 ReMeLife. All rights reserved</span>
+            <span className="footer-copyright">{t('copyright')}</span>
             <span className="footer-disclaimer">
-              DISCLAIMER Cryptocurrency may be unregulated in your jurisdiction. The value of cryptocurrencies may go down as well as up. Profits may be subject to capital gains or other taxes applicable in your jurisdiction.
+              {t('disclaimerFooter')}
             </span>
           </div>
         </div>
         {/* Right: Resources, Socials, Up Arrow */}
         <div className="footer-right">
           <div className="footer-resources">
-            <span className="footer-resources-title">RESOURCES</span>
-            <Link to="/privacy" style={{ color: '#fff', fontSize: '1rem', marginBottom: '0.2rem', textDecoration: 'none' }}>Privacy & Cookie Policy</Link>
-            <Link to="/disclaimer" style={{ color: '#fff', fontSize: '1rem', marginBottom: '0.2rem', textDecoration: 'none' }}>Disclaimer</Link>
-            <a href="#" style={{ color: '#fff', fontSize: '1rem', marginBottom: '0.2rem', textDecoration: 'none' }}>Careers</a>
-            <a href="#" style={{ color: '#fff', fontSize: '1rem', textDecoration: 'none' }}>Contact Us</a>
+            <span className="footer-resources-title">{t('resources')}</span>
+            <Link to="/privacy" style={{ color: '#fff', fontSize: '1rem', marginBottom: '0.2rem', textDecoration: 'none' }}>{t('privacyCookiePolicy')}</Link>
+            <Link to="/disclaimer" style={{ color: '#fff', fontSize: '1rem', marginBottom: '0.2rem', textDecoration: 'none' }}>{t('disclaimerPageTitle')}</Link>
+            <a href="#" style={{ color: '#fff', fontSize: '1rem', marginBottom: '0.2rem', textDecoration: 'none' }}>{t('careers')}</a>
+            <a href="#" style={{ color: '#fff', fontSize: '1rem', textDecoration: 'none' }}>{t('contactUs')}</a>
           </div>
           <div className="footer-socials">
             <a href="https://x.com/mylumi_ai" target="_blank" rel="noopener noreferrer"><img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/twitter.svg" alt="Twitter" style={{ width: '32px', height: '32px', background: '#1da1f2', borderRadius: '50%', padding: '4px' }} /></a>
@@ -345,31 +349,32 @@ function FooterSection() {
 
 function SolutionsPage() {
   const [modalOpen, setModalOpen] = useState(false);
+  const { t } = useTranslation();
   return (
     <>
       <Navbar />
       <div className="solutions-section bg-[#18153a] min-h-screen text-white py-16 px-4 flex flex-col items-center">
         <h2 className="solutions-main-heading mb-12 text-[#b16fc9] text-center" style={{ fontFamily: 'Space Grotesk, Orbitron, sans-serif', fontWeight: 700, fontSize: '2rem' }}>
-          Harnessing the value of digital care for those who need it most
+          {t('solutionsMainHeading')}
         </h2>
         <div className="solutions-feature-row flex flex-col md:flex-row items-center max-w-5xl w-full gap-12 mb-16">
           <div className="flex-1 solutions-feature-text">
             <h3 className="solutions-feature-title" style={{ fontFamily: 'Orbitron, Space Grotesk, sans-serif', fontWeight: 900, fontSize: '2rem', marginBottom: '1rem' }}>
-              WHAT'S REMELIFE?
+              {t('whatsRemelife')}
             </h3>
             <p className="mb-4">
-              ReMeLife is the world's first web3 Care-to-Earn community ecosystem, that rewards its care givers for their daily Care Actions, and that democratises data ownership.
+              {t('remelifeSolutionsDesc1')}
             </p>
             <p className="mb-4">
-              Community-funded, ReMeLife is a social impact, decentralised health and care platform, that's been created 'by the people, for the people'.
+              {t('remelifeSolutionsDesc2')}
             </p>
             <p className="mb-4">
-              In these difficult and uncertain times, ReMeLife's bringing the digital value in care back to its community.
+              {t('remelifeSolutionsDesc3')}
             </p>
-            <a href="#" className="text-sky-400 hover:underline">Visit ReMeLife</a>
+            <a href="#" className="text-sky-400 hover:underline">{t('visitRemelifeSolutions')}</a>
           </div>
           <div className="flex-1 flex flex-col items-center">
-            <span className="solutions-feature-label mb-2 text-center" style={{ color: '#fff', fontFamily: 'Space Grotesk, Orbitron, sans-serif', fontWeight: 600, fontSize: '1rem', letterSpacing: '0.05em' }}>APP ECOSYSTEM</span>
+            <span className="solutions-feature-label mb-2 text-center" style={{ color: '#fff', fontFamily: 'Space Grotesk, Orbitron, sans-serif', fontWeight: 600, fontSize: '1rem', letterSpacing: '0.05em' }}>{t('appEcosystem')}</span>
             <img
               src={process.env.PUBLIC_URL + "/data-images/app-ecosystem-img.png"}
               alt="App Ecosystem"
@@ -394,54 +399,52 @@ function SolutionsPage() {
         {/* Stats Headings */}
         <div className="solutions-stats-row w-full max-w-5xl flex flex-col md:flex-row justify-between items-center mb-8 gap-8 md:gap-0">
           <div className="solutions-stat text-center flex-1">
-            <div className="solutions-stat-label">Persons caring for someone</div>
+            <div className="solutions-stat-label">{t('personsCaring')}</div>
             <div className="solutions-stat-value">62%</div>
           </div>
           <div className="solutions-stat text-center flex-1">
-            <div className="solutions-stat-label">Persons over 60 years of age</div>
+            <div className="solutions-stat-label">{t('personsOver60')}</div>
             <div className="solutions-stat-value">20%</div>
           </div>
           <div className="solutions-stat text-center flex-1">
-            <div className="solutions-stat-label">Persons in poverty</div>
+            <div className="solutions-stat-label">{t('personsInPoverty')}</div>
             <div className="solutions-stat-value">44%</div>
           </div>
         </div>
         {/* Gradient Boxes */}
         <div className="solutions-boxes-grid w-full max-w-5xl grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           <div className="solutions-box">
-            <div className="solutions-box-title">Passive Income<br /><span className="solutions-box-sub">CARE2EARN</span></div>
-            <div className="solutions-box-desc">Using RemindMecare, posting in the Forum, sharing news with your family care circle and viewing products in the Market, all earn reward tokens for your daily care actions.<br /><br />Within time you'll build up an income earned passively from your daily digital care actions.</div>
+            <div className="solutions-box-title" dangerouslySetInnerHTML={{ __html: t('passiveIncomeCare2Earn') }}></div>
+            <div className="solutions-box-desc" dangerouslySetInnerHTML={{ __html: t('passiveIncomeCare2EarnDesc') }}></div>
           </div>
           <div className="solutions-box">
-            <div className="solutions-box-title">Passive Income<br /><span className="solutions-box-sub">DATA2EARN</span></div>
-            <div className="solutions-box-desc">Personal data is captured through use of ReMeLife apps and other services, and is used to define the profile of the person cared for, their family and their networks.<br /><br />This data can be monetised by the Member, whether for their own benefit or to donate to family, friends or charities.</div>
+            <div className="solutions-box-title" dangerouslySetInnerHTML={{ __html: t('passiveIncomeData2Earn') }}></div>
+            <div className="solutions-box-desc" dangerouslySetInnerHTML={{ __html: t('passiveIncomeData2EarnDesc') }}></div>
           </div>
           <div className="solutions-box">
-            <div className="solutions-box-title">Passive Income<br /><span className="solutions-box-sub">REFERRAL PLAN</span></div>
-            <div className="solutions-box-desc">We all build personal social networks, but most earn little from them. Our data is harvested and in return, we get 'free' software, told what to buy, read and watch. And increasingly, what to believe.<br /><br />ReMeLife enables you to monetise your personal network.</div>
+            <div className="solutions-box-title" dangerouslySetInnerHTML={{ __html: t('passiveIncomeReferralPlan') }}></div>
+            <div className="solutions-box-desc" dangerouslySetInnerHTML={{ __html: t('passiveIncomeReferralPlanDesc') }}></div>
           </div>
         </div>
         <div className="solutions-boxes-grid w-full max-w-5xl grid grid-cols-1 md:grid-cols-3 gap-8">
           <div className="solutions-box">
-            <div className="solutions-box-title">Savings & Income<br /><span className="solutions-box-sub">ONLINE RETAIL</span></div>
-            <div className="solutions-box-desc">REMEs and LUMIs are used to gain discounts on products purchased in ReMe Market.<br /><br />Members can introduce vendors to ReMe Market and earn commissions on sales made by the vendor.</div>
+            <div className="solutions-box-title" dangerouslySetInnerHTML={{ __html: t('savingsIncomeOnlineRetail') }}></div>
+            <div className="solutions-box-desc" dangerouslySetInnerHTML={{ __html: t('savingsIncomeOnlineRetailDesc') }}></div>
           </div>
           <div className="solutions-box">
-            <div className="solutions-box-title">Passive Income<br /><span className="solutions-box-sub">TOKENOMICS</span></div>
-            <div className="solutions-box-desc">ReMeLife is a three token ecosystem. Care actions using ReMeLife's apps earn Care Action Points (CAPs). These are converted to REMEs which can be used to make purchases in the ecosystem or traded as ERC20 tokens. LUMI, the AI token, is convertible to REMEs.</div>
+            <div className="solutions-box-title" dangerouslySetInnerHTML={{ __html: t('passiveIncomeTokenomics') }}></div>
+            <div className="solutions-box-desc" dangerouslySetInnerHTML={{ __html: t('passiveIncomeTokenomicsDesc') }}></div>
           </div>
           <div className="solutions-box">
-            <div className="solutions-box-title">Revenue Distribution<br /><span className="solutions-box-sub">NFTS, CHARITY & DAO</span></div>
-            <div className="solutions-box-desc">ReMeLife enables everyone to gain from crypto's potential.<br /><br />Charities can monetise memberships, apps can reward for their usage.<br /><br />The ReMeLife DAO treasury will share its revenues with the community.</div>
+            <div className="solutions-box-title" dangerouslySetInnerHTML={{ __html: t('revenueDistribution') }}></div>
+            <div className="solutions-box-desc" dangerouslySetInnerHTML={{ __html: t('revenueDistributionDesc') }}></div>
           </div>
         </div>
         
         
        
         {/* Callout Box */}
-        <div className="solutions-callout-box w-full max-w-3xl mx-auto mt-8 mb-8 p-6 rounded-2xl text-white text-center" style={{ background: 'linear-gradient(135deg, #23234a 60%, #5ee7df 120%)', border: '1.5px solid #b16fc9', boxShadow: '0 4px 32px #0006' }}>
-          Register as a ReMeLife member <a href="#" className="text-sky-200 underline hover:text-sky-400">here</a>, and get your ReMeLife wallet.<br />
-          Then collect free REMEs as you build your community, using the ReMeLife Community Builder Referral Program.
+        <div className="solutions-callout-box w-full max-w-3xl mx-auto mt-8 mb-8 p-6 rounded-2xl text-white text-center" style={{ background: 'linear-gradient(135deg, #23234a 60%, #5ee7df 120%)', border: '1.5px solid #b16fc9', boxShadow: '0 4px 32px #0006' }} dangerouslySetInnerHTML={{ __html: t('registerAsMember') }}>
         </div>
 
         
@@ -449,13 +452,13 @@ function SolutionsPage() {
         <div className="solutions-feature-row flex flex-col md:flex-row items-center max-w-5xl w-full gap-12 mb-16 mt-16">
           <div className="flex-1 solutions-feature-text">
             <h3 className="solutions-feature-title" style={{ fontFamily: 'Orbitron, Space Grotesk, sans-serif', fontWeight: 900, fontSize: '2rem', marginBottom: '1rem' }}>
-              WHAT'S REMINDMECARE?
+              {t('whatsRemindMecare')}
             </h3>
             <p className="mb-4">
-              At the heart of the ReMeLife ecosystem is the RemindMecare app (aka Reme). Used by those cared for at home and by formal care providers, such as care home, ReMe provides a suite of person-centred care functions that improves care, communication and connectivity.
+              {t('remindMecareDesc1')}
             </p>
-            <a href="#" className="text-sky-400 hover:underline block mb-1">Visit RemindMecare b2c</a>
-            <a href="#" className="text-sky-400 hover:underline block">Visit RemindMecare b2b</a>
+            <a href="#" className="text-sky-400 hover:underline block mb-1">{t('visitRemindMecareB2C')}</a>
+            <a href="#" className="text-sky-400 hover:underline block">{t('visitRemindMecareB2B')}</a>
           </div>
           <div className="flex-1 flex flex-col items-center">
             <video
@@ -471,19 +474,19 @@ function SolutionsPage() {
         </div>
         {/* AI Section Heading */}
         <h2 className="solutions-main-heading mb-12 text-[#b16fc9] text-center" style={{ fontFamily: 'Space Grotesk, Orbitron, sans-serif', fontWeight: 700, fontSize: '2rem' }}>
-          Integrating AI for the benefit of the care sector
+          {t('integratingAIFull')}
         </h2>
         {/* AI Implementation Section */}
         <div className="solutions-feature-row flex flex-col md:flex-row items-center max-w-5xl w-full gap-12 mb-16">
           <div className="flex-1 solutions-feature-text">
             <h3 className="solutions-feature-title" style={{ fontFamily: 'Orbitron, Space Grotesk, sans-serif', fontWeight: 900, fontSize: '2rem', marginBottom: '1rem' }}>
-              AI IMPLEMENTATION
+              {t('aiImplementation')}
             </h3>
             <p className="mb-4">
-              ELR® (recent activities, preferences, habits, life story, family, music, images, work history, etc.) is our proprietary data set that captures, collates and deploys personal data captured from digital activities, and that is used to enhance multiple care processes.
+              {t('elrDesc')}
             </p>
             <p className="mb-4">
-              The AI system (AI4U) that is being layered into ReMeLife and its modules and for which Blui is the user-friendly AI primary agent that guides the user, will use existing AI technologies predominantly based on the LLM agentic models that are best suited to each of the planned and multiple purposes.
+              {t('aiSystemDesc')}
             </p>
           </div>
           <div className="flex-1 flex flex-col items-center">
@@ -499,19 +502,19 @@ function SolutionsPage() {
         <div className="solutions-feature-row flex flex-col md:flex-row items-center max-w-5xl w-full gap-12 mb-16">
           <div className="flex-1 solutions-feature-text">
             <div className="mb-4" style={{ fontWeight: 500 }}>
-              The AI enhancements currently being developed are as follows.
+              {t('aiEnhancements')}
             </div>
             <ul className="solutions-list mb-4">
-              <li>AI System for ELR® personal health data management</li>
-              <li>Activity Creation & Cognitive Stimulation</li>
-              <li>ReMeComm Community Engagement</li>
-              <li>Personal AI Agents/Virtual Companions (AI4U)</li>
-              <li>Automated Reporting</li>
-              <li>Enhanced Data Security</li>
-              <li>Data Management & Monetisation</li>
+              <li>{t('aiSystemForElr')}</li>
+              <li>{t('activityCreation')}</li>
+              <li>{t('remeCommEngagement')}</li>
+              <li>{t('personalAIAgents')}</li>
+              <li>{t('automatedReporting')}</li>
+              <li>{t('enhancedDataSecurity')}</li>
+              <li>{t('dataManagementMonetisation')}</li>
             </ul>
-            <a href="#" className="text-sky-400 hover:underline block mb-1">AI Viability Analysis</a>
-            <a href="#" className="text-sky-400 hover:underline block">AI Implementation strategy</a>
+            <a href="#" className="text-sky-400 hover:underline block mb-1">{t('aiViabilityAnalysis')}</a>
+            <a href="#" className="text-sky-400 hover:underline block">{t('aiImplementationStrategy')}</a>
           </div>
           <div className="flex-1 flex flex-col items-center">
             <img
@@ -579,6 +582,7 @@ const newsData = [
 ];
 
 function NewsCardsSection() {
+  const { t } = useTranslation();
   return (
     <div className="w-full flex flex-col items-center mt-12 mb-16">
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-8 w-full max-w-7xl px-4">
@@ -587,7 +591,7 @@ function NewsCardsSection() {
             <img src={process.env.PUBLIC_URL + '/' + card.img} alt={card.title} style={{ width: '100%', height: '110px', objectFit: 'cover' }} />
             <div className="flex-1 flex flex-col justify-between p-4">
               <div className="text-white font-semibold mb-2" style={{ fontFamily: 'Space Grotesk, Orbitron, sans-serif', fontSize: '1.1rem' }}>{card.title}</div>
-              <Link to={`/news/${card.id}`} className="text-sky-300 font-semibold text-sm hover:underline mt-auto">READ MORE »</Link>
+              <Link to={`/news/${card.id}`} className="text-sky-300 font-semibold text-sm hover:underline mt-auto">{t('readMore')}</Link>
             </div>
           </div>
         ))}
@@ -599,12 +603,13 @@ function NewsCardsSection() {
 function NewsDetailPage() {
   const { id } = useParams();
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const news = newsData.find(n => n.id === id);
-  if (!news) return <div className="text-white p-8">News not found.</div>;
+  if (!news) return <div className="text-white p-8">{t('newsNotFound')}</div>;
   return (
     <div className="min-h-screen flex flex-col items-center justify-start bg-[#18153a] text-white py-16 px-4">
       <div className="w-full max-w-4xl mx-auto flex flex-col items-center">
-        <button onClick={() => navigate(-1)} className="mb-6 px-6 py-2 bg-white text-black rounded shadow hover:bg-gray-200 transition self-end">Back</button>
+        <button onClick={() => navigate(-1)} className="mb-6 px-6 py-2 bg-white text-black rounded shadow hover:bg-gray-200 transition self-end">{t('back')}</button>
         <img src={process.env.PUBLIC_URL + '/' + news.img} alt={news.title} className="mb-8 rounded-lg shadow-lg mx-auto" style={{ maxWidth: '600px', width: '100%' }} />
         <h1 className="text-3xl font-bold mb-2" style={{ fontFamily: 'Orbitron, Space Grotesk, sans-serif' }}>{news.title}</h1>
         <div className="w-full text-lg mb-8" style={{ fontFamily: 'Space Grotesk, Orbitron, sans-serif' }}>
@@ -617,6 +622,7 @@ function NewsDetailPage() {
 
 function AboutPage() {
   const [carouselIndex, setCarouselIndex] = React.useState(0);
+  const { t } = useTranslation();
   const partners = [
     'singularities.png',
     'ucl.png',
@@ -637,33 +643,32 @@ function AboutPage() {
     <>
       <Navbar />
       <div className="about-section min-h-screen flex flex-col items-center justify-start bg-[#18153a] text-white py-16 px-4">
-        <h2 className="text-4xl font-bold mb-8 text-center" style={{ fontFamily: 'Orbitron, Space Grotesk, sans-serif', fontSize: '2.5rem', letterSpacing: '0.04em' }}>THE TEAM & COMMUNITY</h2>
+        <h2 className="text-4xl font-bold mb-8 text-center" style={{ fontFamily: 'Orbitron, Space Grotesk, sans-serif', fontSize: '2.5rem', letterSpacing: '0.04em' }}>{t('theTeamAndCommunity')}</h2>
         <div className="max-w-2xl w-full mx-auto flex flex-col items-center">
           <p className="mb-4 text-lg text-center" style={{ fontFamily: 'Space Grotesk, Orbitron, sans-serif' }}>
-            As the founder of ReMeLife, I'm privileged and fortunate to work with a core team of creative long-term diehards, a community of talented individuals that have been focused on bringing Lumi and ReMeLife to its launchpad.
+            {t('teamDesc1')}
           </p>
           <p className="mb-6 text-lg text-center" style={{ fontFamily: 'Space Grotesk, Orbitron, sans-serif' }}>
-            Working from locations globally, predominantly rewarded in vested tokens, and with a social impact soul, the team and an associated Advisory Board, are committed to complete the build of this self-supporting AI and rewards-based community.<br /><br />
-            Unfunded by traditional formal investment and ultimately being DAO managed, Lumi and ReMeLife are being built 'for the people, by the people'. And, after many years, Lumi is now on the launchpad and ReMeLife is close behind".
+            {t('teamDesc2')}
           </p>
           <img src={process.env.PUBLIC_URL + '/about-page-images/simon-hooper-about-page.jpg'} alt="Simon Hooper About" className="my-8 rounded-lg shadow-lg mx-auto" style={{ maxWidth: '600px', width: '100%' }} />
           <p className="mt-2 text-lg text-center" style={{ fontFamily: 'Space Grotesk, Orbitron, sans-serif' }}>
-            "I conceived ReMeLife as a response to my own family experiences, of my time spent developing apps in the care sector, and of the obvious potential of AI, blockchain and crypto to be able to support the financial needs of those that are simply not benefitting from the fiat value inherent in their own digital daily care. Lumi is the all critical element that is integrating the power of AI into the ecosystem, and that will manage scale and data, and drive consumer engagement through his meme character.
+            {t('founderQuote')}
           </p>
           <p className="mt-8 text-lg text-center" style={{ fontFamily: 'Space Grotesk, Orbitron, sans-serif' }}>
-            As a decentralised, tech-based community ecosystem, Lumi assists combat today's unfair harvesting of our daily care actions. As the rich get richer and the rest of us lose our rights and opportunities, Lumi is very much needed, as we enter a new era. We hope you will join us in this mission".
+            {t('missionStatement')}
           </p>
           <img src={process.env.PUBLIC_URL + '/about-page-images/pepe-banner.jpg'} alt="Pepe Banner" className="my-10 rounded-lg shadow-lg mx-auto" style={{ maxWidth: '800px', width: '100%' }} />
           <p className="mt-2 text-lg text-center" style={{ fontFamily: 'Space Grotesk, Orbitron, sans-serif' }}>
-            We love design, creativity, social interactivity, and bringing financial opportunity to our community. So naturally, we've been in crypto for years. And of course we <span style={{ fontStyle: 'italic' }}>LOVE</span> memes. That's why Lumi chose us, he says, as his platform to change the world!
+            {t('memesQuote')}
           </p>
         </div>
 
         {/* PARTNERS & ASSOCIATES SECTION */}
         <div className="w-full flex flex-col items-center mt-24">
-          <h2 className="text-white text-center mb-6" style={{ fontFamily: 'Orbitron, Space Grotesk, sans-serif', fontWeight: 900, fontSize: '2.2rem', letterSpacing: '0.04em' }}>PARTNERS & ASSOCIATES</h2>
+          <h2 className="text-white text-center mb-6" style={{ fontFamily: 'Orbitron, Space Grotesk, sans-serif', fontWeight: 900, fontSize: '2.2rem', letterSpacing: '0.04em' }}>{t('partnersAndAssociates')}</h2>
           <p className="text-lg text-center mb-10 max-w-3xl" style={{ fontFamily: 'Space Grotesk, Orbitron, sans-serif' }}>
-            Over the years of the development of ReMeLife and more recently with Lumi, we have worked with many illustrious partners, advisory board members and consultants. Here's a few of them.
+            {t('partnersDesc')}
           </p>
           <div className="flex flex-row items-center justify-center w-full mb-16" style={{ maxWidth: '1100px' }}>
             <button onClick={handlePrev} className="mr-2 text-2xl text-white bg-transparent border-none cursor-pointer" disabled={carouselIndex === 0} style={{ opacity: carouselIndex === 0 ? 0.3 : 1 }}>&lt;</button>
@@ -683,10 +688,10 @@ function AboutPage() {
 
         {/* NEWS & UPDATES SECTION */}
         <div className="w-full flex flex-col items-center mt-12">
-          <h2 className="text-white text-center mb-6" style={{ fontFamily: 'Orbitron, Space Grotesk, sans-serif', fontWeight: 900, fontSize: '2.2rem', letterSpacing: '0.04em' }}>NEWS & UPDATES</h2>
+          <h2 className="text-white text-center mb-6" style={{ fontFamily: 'Orbitron, Space Grotesk, sans-serif', fontWeight: 900, fontSize: '2.2rem', letterSpacing: '0.04em' }}>{t('newsAndUpdates')}</h2>
           <div className="max-w-2xl text-lg text-center" style={{ fontFamily: 'Space Grotesk, Orbitron, sans-serif' }}>
-            <p className="mb-4">Lumi, ReMeLife and RemindMecare have been a long time in the making. Here are some highlights  and those we've worked with in previous years.</p>
-            <p>We will keep you updated here with our progress and on key industry developments.</p>
+            <p className="mb-4">{t('newsDesc1')}</p>
+            <p>{t('newsDesc2')}</p>
           </div>
         </div>
         <NewsCardsSection />
@@ -698,27 +703,28 @@ function AboutPage() {
 function FaqsPage() {
   const faqs = [
     {
-      question: "I HAVE NEVER BOUGHT A CRYPTO TOKEN BEFORE. WHY SHOULD I DO SO NOW?",
-      answer: `<p>The world is changing and crypto, CBDC's, digital currency, the metaverse, etc., are coming, so you will need to learn the ropes anyway, when it comes to digital wallets, payment transfers, digital money interfaces, etc. So, it makes sense to be ahead of the game.</p><p>And there are opportunities to be had along the way that others are profiting from, not to mention some fun and means to support those social impact projects that you support, which in our case is carers and those being cared for.</p>`
+      question: "faq1Question",
+      answer: "faq1Answer"
     },
     {
-      question: "IS BUYING CRYPTO AND LUMI RISKY?",
-      answer: `<p>Yes, absolutely. Just as betting on the horses, or the stock market, carry their own level of risk, so does buying a token, meme or otherwise on an exchange.</p><p>Indeed, meme tokens are highly volatile and should be considered risky, even true utility, actual project based tokens such as $LUMI.</p>`
+      question: "faq2Question",
+      answer: "faq2Answer"
     },
     {
-      question: "DESCRIBE REMELIFE IN ONE PARAGRAPH",
-      answer: `<p>We get asked this a lot, for ReMeLife, which is the world's first Web3 healthcare platform, has a lot to offer and can seem complicated at first inspection.</p><p>But just like a car, that has a lot going on under the bonnet, however it's simple on the outside. And when you've learnt to use it, it becomes easy and fun. It's the same with ReMeLife.</p><p>For 65% of the world is caring for someone, and they use apps to support their care needs. But they get no financial benefit from the care work they perform with these apps, from the purchases they make online or from the data they generate daily. By using ReMeLife's apps, Members gain REME tokens for their care actions, for posting in the forum, purchasing products, sharing content with their care circle and for sharing their data.</p><p>ReMeLife is the world's first rewards-based healthcare platform. Simple.</p>`
+      question: "faq3Question",
+      answer: "faq3Answer"
     },
   ];
   const [openIndex, setOpenIndex] = React.useState(null);
+  const { t } = useTranslation();
   React.useEffect(() => { window.scrollTo(0, 0); }, []);
   return (
     <div className="min-h-screen flex flex-col bg-[#18153a] text-white">
       <Navbar />
       <div className="flex-1 flex flex-col items-center justify-start py-16 px-4">
-        <h2 className="text-white text-center mb-2" style={{ fontFamily: 'Orbitron, Space Grotesk, sans-serif', fontWeight: 900, fontSize: '2.5rem', letterSpacing: '0.04em' }}>FAQ's</h2>
+        <h2 className="text-white text-center mb-2" style={{ fontFamily: 'Orbitron, Space Grotesk, sans-serif', fontWeight: 900, fontSize: '2.5rem', letterSpacing: '0.04em' }}>{t('faqsTitle')}</h2>
         <div className="text-center mb-10 text-gray-200" style={{ fontFamily: 'Space Grotesk, Orbitron, sans-serif', fontSize: '1rem' }}>
-          Frequently asked questions. We will add to these as we get asked for answers on new questions.
+          {t('faqsSubtitle')}
         </div>
         <div className="w-full max-w-2xl mx-auto flex flex-col gap-2">
           {faqs.map((faq, idx) => (
@@ -728,12 +734,12 @@ function FaqsPage() {
                 style={{ color: '#b16fc9', fontWeight: 700, fontSize: '1.1rem', fontFamily: 'Space Grotesk, Orbitron, sans-serif' }}
                 onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
               >
-                <span>{faq.question}</span>
+                <span>{t(faq.question)}</span>
                 <span style={{ color: '#ffe44d', fontWeight: 700, fontSize: '1.5rem', marginLeft: '1rem' }}>{openIndex === idx ? '-' : '+'}</span>
               </button>
               {openIndex === idx && (
                 <div className="px-8 pb-8 text-white text-left" style={{ fontFamily: 'Space Grotesk, Orbitron, sans-serif', fontSize: '1.08rem', lineHeight: 1.7 }}>
-                  <div dangerouslySetInnerHTML={{ __html: faq.answer }} />
+                  <div dangerouslySetInnerHTML={{ __html: t(faq.answer) }} />
                 </div>
               )}
             </div>
@@ -746,6 +752,7 @@ function FaqsPage() {
 }
 
 function PrivacyPage() {
+  const { t } = useTranslation();
   React.useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -753,7 +760,7 @@ function PrivacyPage() {
     <div className="min-h-screen flex flex-col items-center justify-start bg-[#18153a] text-white py-16 px-4">
       <Navbar />
       <div className="w-full max-w-3xl mx-auto flex flex-col items-center">
-        <h1 className="text-3xl font-bold mb-8 text-center" style={{ fontFamily: 'Orbitron, Space Grotesk, sans-serif' }}>PRIVACY & COOKIES POLICY</h1>
+        <h1 className="text-3xl font-bold mb-8 text-center" style={{ fontFamily: 'Orbitron, Space Grotesk, sans-serif' }}>{t('privacyPolicyTitle')}</h1>
         <div className="text-left text-white" style={{ fontFamily: 'Space Grotesk, Orbitron, sans-serif', fontSize: '1.08rem', lineHeight: 1.7, background: '#23234a', padding: '2rem', borderRadius: '1.5rem', boxShadow: '0 4px 32px #0006' }}>
           <pre style={{ whiteSpace: 'pre-wrap', wordBreak: 'break-word', background: 'none', color: 'inherit', fontFamily: 'inherit', fontSize: 'inherit', border: 'none', margin: 0, padding: 0 }}>
 {`
@@ -771,7 +778,7 @@ This policy will explain areas of our app or website that may affect your privac
 
 We are the data controller under the applicable privacy laws.
 
-For the purpose of this Policy, "Information" means any information relating to an identified or identifiable individual. This includes Information relating to your use of: (a) our mobile apps ("Mobile App" the "Service"); (b) www.blui.io and any other dedicated websites which link to this policy ("Website"). When you use the App or website you accept our rules and policies which set out how we handle your Information, and you understand we may collect, process, use and store your Information as described in this Policy. "Payment" refers to deposits made using tokens via your virtual wallet. If you do not agree with this Policy, you must not use our app or website. If you change your mind in the future, you must stop using our app or website, and you may exercise your rights in relation to your Information as set out in this Policy.
+For the purpose of this Policy, "Information" means any information relating to an identified or identifiable individual. This includes Information relating to your use of: (a) our mobile apps ("Mobile App" the "Service"); (b) www.blui.io and any other dedicated websites which link to this policy ("Website"). When you use the App or website you accept our rules and policies which set out how we handle your Information, and you understand we may collect, process, use and store your Information as described in this Policy. "Payment" refers to deposits made using tokens via your virtual wallet. If you do not agree with this Policy, you must not use our app or website. If you change your mind in the future, you must stop using our app or website, and you may exercise your rights in relation to your Information as set out in this Policy.r
 
 PERSONAL INFORMATION WE COLLECT
 We may collect and use the following Information about you:

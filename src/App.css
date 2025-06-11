@@ -840,47 +840,23 @@ html {
 @media (max-width: 900px) {
   .coming-soon-grid {
     grid-template-columns: 1fr;
-    grid-template-rows: unset;
-    gap: 2rem 0;
-    padding: 2rem 0.5rem;
-    max-width: 98vw;
+    gap: 1.5rem;
   }
   .coming-soon-row {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 1.2rem;
   }
   .coming-soon-img {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 0.5rem;
+    width: 160px;
+    height: 160px;
+    margin-right: 0;
+    margin-bottom: 1rem;
   }
   .coming-soon-item-title {
-    font-size: 1.1rem;
+    font-size: 1.4rem;
   }
   .coming-soon-item-desc {
-    font-size: 0.98rem;
-    max-width: 95vw;
+    font-size: 1rem;
   }
-}
-
-#custom-translate-container {
-  position: absolute;
-  top: 24px;
-  left: 24px;
-  z-index: 9999;
-  background: rgba(0, 0, 0, 0.6);
-  border-radius: 999px;
-  padding: 4px 12px;
-}
-
-#custom-google-translate {
-  background: transparent;
-  color: white;
-  border: none;
-  font-size: 14px;
-  font-family: 'Space Grotesk', sans-serif;
-  cursor: pointer;
-  outline: none;
 }
